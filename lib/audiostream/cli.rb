@@ -22,27 +22,36 @@ Licenced for usage and distribution under a BSD version 2 Licence.
     method_option :playlist, :aliases => "-p", :desc => "m3u playlist to parse"
 
     def time
+
+      help(:time) if options[:playlist].nil?
       @filepath = "#{options[:playlist]}"
   
       if File.exists?(@filepath) then
-  	  read_m3u(@filepath) do
-  	    @mp3 = Mp3Info.new(@filepath)
-  	    puts Time.at(@mp3.length).gmtime.strftime('%R:%S')
+	File.open(@filepath).each do |item|
+	  @item=item.chomp
+
+	  next if /^#EXT(M3U|INF:).*$/.match(@item)
+	  puts "Reading #{@item}"
+
+	  if File.exists?(@item) then
+	    puts "#{@item}: #{playtime(@item)}"
+	  else
+            puts "Error: File #{@item} not found"
+          end
         end
-  	else
-  	  help(:time)
-  	end
+      else
+  	puts "Playlist could not be loaded."
+      end
     end
-  
+
     private
   
-    def read_m3u(path, &block)
-      File.open(@filepath).each do |item|
-        next if /^#EXT(M3U|INF:).*$/.match(item)
-        next unless File.exists?(item)
-  	
-  	block.call
-      end
+    def playtime(path)
+      Time.at(mp3(path).length).gmtime.strftime('%R:%S')
+    end
+
+    def mp3(path)
+      return Mp3Info.new path
     end
   end
 end
