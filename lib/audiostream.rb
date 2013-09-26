@@ -1,6 +1,5 @@
 require "audiostream/version"
-require "audiostream/thor"
+require "audiostream/cli"
 
 module AudioStream
-  include AudioStream::CLI
 end

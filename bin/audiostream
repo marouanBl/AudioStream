@@ -13,6 +13,5 @@ require 'bundler/setup'
 require 'audiostream'
 
 Bundler.require
-
 AudioStream::CLI.start
 # vim: sts=4:ts=4:ai:syntax=ruby:

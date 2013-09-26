@@ -1,6 +1,6 @@
 require 'thor'
 
-module Audiostream
+module AudioStream
   class CLI < Thor
     include Thor::Actions
 

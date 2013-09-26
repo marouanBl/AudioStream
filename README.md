@@ -1,24 +1,28 @@
 # Audiostream
 
-TODO: Write a gem description
+AudioStream (C)2013 CompuTEK Industries. All Rights Reserved.
+Licenced for usage and distribution under a BSD version 2 Licence.
+
+Streaming Audio administration toolkit
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'audiostream'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+To install the gem type the following command in a new terminal:
 
     $ gem install audiostream
 
 ## Usage
 
-TODO: Write usage instructions here
+Commands:
+  audiostream help            # Display the application help text.
+  audiostream help [COMMAND]  # Describe available commands or one specific command
+  audiostream time            # Display the play time of an audio file.
+
+Usage:
+  audiostream time
+
+Options:
+  -p, [--playlist=PLAYLIST]  # m3u playlist to parse
+
 
 ## Contributing
 
